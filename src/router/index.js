@@ -5,6 +5,7 @@ import Home from '@/components/Home'
 import DishesGroupMain from '@/components/dishesGroups/DishesGroupsMain'
 import DishesGroupTable from '@/components/dishesGroups/DishesGroupsTable'
 import DishesGroupForm from '@/components/dishesGroups/DishesGroupsForm'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -37,6 +38,10 @@ export default new Router({
           component: DishesGroupTable,
           meta: {
             groupName: 'dishesGroups'
+          },
+          beforeRouteEnter ( to, from, next) {
+            store.commit('getDishesGroups');
+            next();
           }
         },
         {

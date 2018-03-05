@@ -10,7 +10,7 @@ const store = new Vuex.Store({
     dishesGroups: []
   },
   mutations: {
-    getDishesGroups () {
+    getDishesGroups (state) {
       fetch(`${backUrl}/dishesGroups`,{method: 'GET'}).then(res => {
         return res.json();
       }).then(data => {
@@ -19,7 +19,5 @@ const store = new Vuex.Store({
     }
   }
 })
-
-console.log(store);
 
 export default store

@@ -34,7 +34,6 @@
 <script>
 export default {
   name: 'App',
-  store,
   methods: {
     changeTab(tab) {
       this.$router.push(`/${tab.name}`);

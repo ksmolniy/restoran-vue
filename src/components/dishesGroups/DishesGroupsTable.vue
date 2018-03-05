@@ -13,7 +13,11 @@
 </template>
 <script>
 export default {
-  
+  computed: {
+      dishesGroups () {
+          return [] && this.$store.state.dishesGroups;
+      }
+  }
 }
 </script>
 <style lang="scss">
