@@ -7,6 +7,8 @@ import DishesGroupTable from '@/components/dishesGroups/DishesGroupsTable'
 import DishesGroupForm from '@/components/dishesGroups/DishesGroupsForm'
 import store from '../store'
 
+import ROUTES from './routes'
+
 Vue.use(Router)
 
 export default new Router({
@@ -36,12 +38,13 @@ export default new Router({
         {
           path: '',
           component: DishesGroupTable,
+          name: ROUTES.DISHES_GROUPS,
           meta: {
             groupName: 'dishesGroups'
           },
-          beforeRouteEnter ( to, from, next) {
-            store.commit('getDishesGroups');
-            next();
+          beforeEnter (to, from, next) {
+            store.dispatch('getDishesGroups')
+            next()
           }
         },
         {
@@ -51,6 +54,14 @@ export default new Router({
             breadcrumb: 'Новая группа блюд',
             groupName: 'dishesGroups'
           }
+        },
+        {
+          path: 'edit/:id',
+          component: DishesGroupForm,
+          meta: {
+            breadcrumb: 'Loading',
+            groupName: 'dishesGroups'
+          },
         }
       ]
     },
