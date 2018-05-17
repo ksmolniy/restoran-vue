@@ -59,7 +59,7 @@ export default new Router({
           path: 'edit/:id',
           component: DishesGroupForm,
           meta: {
-            breadcrumb: 'Loading',
+            breadcrumb: 'Редактирование группы блюд',
             groupName: 'dishesGroups'
           },
         }
