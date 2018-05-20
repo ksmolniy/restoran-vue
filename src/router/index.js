@@ -5,7 +5,12 @@ import Home from '@/components/Home'
 import DishesGroupMain from '@/components/dishesGroups/DishesGroupsMain'
 import DishesGroupTable from '@/components/dishesGroups/DishesGroupsTable'
 import DishesGroupForm from '@/components/dishesGroups/DishesGroupsForm'
+import DishesMain from '@/components/dishes/DishesMain'
+import DishesTable from '@/components/dishes/DishesTable'
+import DishesForm from '@/components/dishes/DishesForm'
 import store from '../store'
+
+import { makeRoutes } from './automatizations'
 
 import ROUTES from './routes'
 
@@ -27,44 +32,8 @@ export default new Router({
         groupName: 'home'
       }
     },
-    {
-      path: '/dishesGroups',
-      component: DishesGroupMain,
-      meta: {
-        breadcrumb: 'Группы блюд',
-        groupName: 'dishesGroups'
-      },
-      children: [
-        {
-          path: '',
-          component: DishesGroupTable,
-          name: ROUTES.DISHES_GROUPS,
-          meta: {
-            groupName: 'dishesGroups'
-          },
-          beforeEnter (to, from, next) {
-            store.dispatch('getDishesGroups')
-            next()
-          }
-        },
-        {
-          path: 'create',
-          component: DishesGroupForm,
-          meta: {
-            breadcrumb: 'Новая группа блюд',
-            groupName: 'dishesGroups'
-          }
-        },
-        {
-          path: 'edit/:id',
-          component: DishesGroupForm,
-          meta: {
-            breadcrumb: 'Редактирование группы блюд',
-            groupName: 'dishesGroups'
-          },
-        }
-      ]
-    },
+    makeRoutes('dishesGroups', ['Группа блюд', 'Редактировать группу блюд', 'Создать группу блюд'], DishesGroupMain, DishesGroupTable, DishesGroupForm),
+    makeRoutes('dishes', ['Блюда', 'Редактировать блюдо', 'Создать блюдо'], DishesMain, DishesTable, DishesForm),
     {
       path: '/about',
       component: About,

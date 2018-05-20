@@ -13,10 +13,8 @@
             </el-table-column>
             <el-table-column v-for="field in fields"
                 :key="field.name"
-                :title="field.title">
-                <template slot-scope="scope">
-                    {{ scope.row[field.name] }}
-                </template>
+                :prop="field.name"
+                :label="field.title">
             </el-table-column>
             <el-table-column
                 label="Действия">
@@ -35,11 +33,9 @@ export default {
         name: String,
         fields: Array
     },
-  computed: {
-      values () {
-          return [] && this.$store.state[this.name];
-      }
-  },
+  data: () => ({
+      values: [],
+  }),
   methods: {
       deleteItem(id) {
           this.$store.dispatch(`delete${capitalizeFirstLetter(this.name).slice(0, -1)}`,{ id }).then(()=>{
@@ -47,6 +43,11 @@ export default {
           });
 
       }
+  },
+  created() {
+        this.$store.dispatch(`get${capitalizeFirstLetter(this.name)}`).then(() => {
+            this.values = [].concat(this.$store.state[this.name]);
+        });
   }
 }
 </script>

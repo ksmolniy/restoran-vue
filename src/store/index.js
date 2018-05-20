@@ -12,9 +12,11 @@ const store = new Vuex.Store({
   },
   mutations: {
     ...nameToMutations('dishesGroups'),
+    ...nameToMutations('dishes'),
   },
   actions: {
     ...mutatationNameToActions('dishesGroups'),
+    ...mutatationNameToActions('dishes'),
   }
 })
 
