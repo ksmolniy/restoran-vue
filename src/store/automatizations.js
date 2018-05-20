@@ -35,7 +35,8 @@ export function mutatationNameToActions(name) {
   }
 }
 
-export function capitalizeFirstLetter(string) {
+export function capitalizeFirstLetter(val) {
+  const string = val !== undefined ? val : '';
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
