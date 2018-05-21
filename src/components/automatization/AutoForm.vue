@@ -4,7 +4,11 @@
             v-for="field in fields"
             :key="field.name">
             <el-input v-model="model[field.name]" v-if="field.type === 'String'"></el-input>
-            <el-select v-model="model[field.name]" v-else-if="field.type === 'Group'" placeholder="Выберите пункт">
+            <el-select v-model="model[field.name]" 
+                v-else-if="field.type === 'Group'"
+                placeholder="Выберите пункт"
+                filterable
+                :multiple="field.multi" >
                 <el-option
                     v-for="item in secondData[field.name]"
                     :key="item._id"
@@ -22,6 +26,9 @@
                 <img v-if="model[field.name]" :src="model[field.name]" class="avatar">
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
+            <el-input-number
+                v-else-if="field.type === 'Number'"
+                v-model="model[field.name]"></el-input-number>
         </el-form-item>
         <el-form-item>
             <el-button type="primary" @click="submit()">Сохранить</el-button>
@@ -56,7 +63,7 @@ export default {
                     this.$router.push(`/${this.name}`)
                 });
             } else {
-                this.update({data: { name: this.model.name}, id: this.model._id}).then(res=>{
+                this.update({data: Object.assign({},this.model), id: this.model._id}).then(res=>{
                     this.$router.push(`/${this.name}`)
                 });
             }

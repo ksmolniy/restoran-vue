@@ -8,6 +8,12 @@ import DishesGroupForm from '@/components/dishesGroups/DishesGroupsForm'
 import DishesMain from '@/components/dishes/DishesMain'
 import DishesTable from '@/components/dishes/DishesTable'
 import DishesForm from '@/components/dishes/DishesForm'
+import ClientsMain from '@/components/clients/ClientsMain'
+import ClientsTable from '@/components/clients/ClientsTable'
+import ClientsForm from '@/components/clients/ClientsForm'
+import TablesMain from '@/components/tables/TablesMain'
+import TablesTable from '@/components/tables/TablesTable'
+import TablesForm from '@/components/tables/TablesForm'
 import store from '../store'
 
 import { makeRoutes } from './automatizations'
@@ -32,8 +38,10 @@ export default new Router({
         groupName: 'home'
       }
     },
-    makeRoutes('dishesGroups', ['Группа блюд', 'Редактировать группу блюд', 'Создать группу блюд'], DishesGroupMain, DishesGroupTable, DishesGroupForm),
-    makeRoutes('dishes', ['Блюда', 'Редактировать блюдо', 'Создать блюдо'], DishesMain, DishesTable, DishesForm),
+    makeRoutes('dishesGroups', ['Группа блюд', 'Редактировать группу блюд', 'Завести группу блюд'], DishesGroupMain, DishesGroupTable, DishesGroupForm),
+    makeRoutes('dishes', ['Блюда', 'Редактировать блюдо', 'Завести блюдо'], DishesMain, DishesTable, DishesForm),
+    makeRoutes('clients', ['Клиенты', 'Редактировать клиента', 'Завести клиента'], ClientsMain, ClientsTable, ClientsForm),
+    makeRoutes('tables', ['Столики', 'Редактировать столик', 'Завести Столик'], TablesMain, TablesTable, TablesForm),
     {
       path: '/about',
       component: About,

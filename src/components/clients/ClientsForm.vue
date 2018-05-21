@@ -6,23 +6,18 @@ import AutoForm from '../automatization/AutoForm'
 
 export default {
     data: () => ({
-        name: 'dishes',
+        name: 'clients',
         fields: [
             {
                 name: 'name',
                 type: 'String',
-                title: 'Название'
+                title: 'Имя клиента'
             },
             {
-                name: 'dishesGroups',
+                name: 'tables',
                 type: 'Group',
-                title: 'Группа блюд',
-                titleField: 'name'
-            },
-            {
-                name: 'pic',
-                type: 'Image',
-                title: 'Изображение блюда'
+                title: 'Номер столика',
+                titleField: 'number'
             },
         ]
     }),

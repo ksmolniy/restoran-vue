@@ -13,10 +13,14 @@ const store = new Vuex.Store({
   mutations: {
     ...nameToMutations('dishesGroups'),
     ...nameToMutations('dishes'),
+    ...nameToMutations('clients'),
+    ...nameToMutations('tables'),
   },
   actions: {
     ...mutatationNameToActions('dishesGroups'),
     ...mutatationNameToActions('dishes'),
+    ...mutatationNameToActions('clients'),
+    ...mutatationNameToActions('tables'),
   }
 })
 
