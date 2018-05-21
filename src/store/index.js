@@ -16,6 +16,7 @@ const store = new Vuex.Store({
     ...nameToMutations('clients'),
     ...nameToMutations('tables'),
     ...nameToMutations('prices'),
+    ...nameToMutations('orders'),
   },
   actions: {
     ...mutatationNameToActions('dishesGroups'),
@@ -23,6 +24,7 @@ const store = new Vuex.Store({
     ...mutatationNameToActions('clients'),
     ...mutatationNameToActions('tables'),
     ...mutatationNameToActions('prices'),
+    ...mutatationNameToActions('orders'),
   }
 })
 

@@ -17,6 +17,9 @@ import TablesForm from '@/components/tables/TablesForm'
 import PricesMain from '@/components/prices/PricesMain'
 import PricesTable from '@/components/prices/PricesTable'
 import PricesForm from '@/components/prices/PricesForm'
+import OrdersMain from '@/components/orders/OrdersMain'
+import OrdersTable from '@/components/orders/OrdersTable'
+import OrdersForm from '@/components/orders/OrdersForm'
 import store from '../store'
 
 import { makeRoutes } from './automatizations'
@@ -46,6 +49,7 @@ export default new Router({
     makeRoutes('clients', ['Клиенты', 'Редактировать клиента', 'Завести клиента'], ClientsMain, ClientsTable, ClientsForm),
     makeRoutes('tables', ['Столики', 'Редактировать столик', 'Завести Столик'], TablesMain, TablesTable, TablesForm),
     makeRoutes('prices', ['Ценики', 'Редактировать ценик', 'Завести Ценик'], PricesMain, PricesTable, PricesForm),
+    makeRoutes('orders', ['Заказы', 'Редактировать заказ', 'Сделать заказ'], OrdersMain, OrdersTable, OrdersForm),
     {
       path: '/about',
       component: About,
